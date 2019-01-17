@@ -1,4 +1,4 @@
-# teaspoon-tycoon
+## Teaspoon Tycoon
 Changing the world with a one teaspoon of a loan
 
 #### About
