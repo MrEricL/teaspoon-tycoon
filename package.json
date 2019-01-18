@@ -9,7 +9,8 @@
     "build": "webpack -r esm",
     "dev-client": "webpack-dev-server -r esm --open",
     "dev-server": "nodemon -r esm server/server.js",
-    "start": "node -r esm server/server.js"
+    "start": "node -r esm server/server.js",
+    "heroku-postbuild": "yarn build"
   },
   "dependencies": {
     "@babel/core": "^7.2.2",
