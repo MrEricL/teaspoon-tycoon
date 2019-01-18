@@ -6,7 +6,8 @@
   "author": "MrEricL",
   "license": "MIT",
   "scripts": {
-    "dev-server": "nodemon -r esm server/server.js"
+    "dev-server": "nodemon -r esm server/server.js",
+    "start": "node -r esm server/server.js"
   },
   "dependencies": {
     "@babel/core": "^7.2.2",
