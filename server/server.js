@@ -12,6 +12,8 @@ const db = new Sequelize(dbURI);
 const app = express();
 app.use(cors());
 
+
+app.use(express.static('dist'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.disable('x-powered-by');
