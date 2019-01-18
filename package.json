@@ -6,6 +6,8 @@
   "author": "MrEricL",
   "license": "MIT",
   "scripts": {
+    "build": "webpack -r esm",
+    "dev-client": "webpack-dev-server -r esm --open",
     "dev-server": "nodemon -r esm server/server.js",
     "start": "node -r esm server/server.js"
   },
