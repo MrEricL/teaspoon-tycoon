@@ -4,14 +4,14 @@ import db from '../db';
 const Loans  = db.define('loan', {
 	userID: {
 		type: Sequelize.INTEGER,
-		validation: {
+		validate: {
 			notNull: true
 		}
 	}, 
 	loanID: {
 		type: Sequelize.INTEGER,
 		primaryKey: true,
-		validation: {
+		validate: {
 			notNull: true 
 		}
 	}, 

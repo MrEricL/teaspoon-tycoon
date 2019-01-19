@@ -1,5 +1,6 @@
 import Loans from '../model/loans';
 
+// Loan Endpoints =====================================================
 export const getLoans = (req, res) => {
 	Loans.findAll().then(function(rows) {
 		res.send(rows);
@@ -8,7 +9,7 @@ export const getLoans = (req, res) => {
 
 export const createLoan = (req, res) =>{
 	Loans.create(req.body);
-	res.send("it worked!");
+	res.send(req.body);
 }
 
 
@@ -45,4 +46,3 @@ export const getLoansOutstanding = (req, res) => {
 		res.send(rows);
 	});
 }
-
