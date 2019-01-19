@@ -18,7 +18,7 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        type: 'javascript/esm',
+        type: 'javascript/auto',
         exclude: /node_modules/,
         use: [
           'babel-loader',
