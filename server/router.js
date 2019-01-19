@@ -30,10 +30,10 @@ router.route('/bank')
 	.get(getBanks)
 	.post(createBank);
 
-router.route('/money/:bankID/')
+router.route('/bank/:bankID/')
 	.get(getMoneyByID);
 
-router.route('/money/')
+router.route('/bank/money/')
 	.post(editMoneyByID);
 
 
