@@ -7,5 +7,5 @@ build:
   languages:
     - nodejs
 run:
-  web: npm start
+  web: yarn start
 
