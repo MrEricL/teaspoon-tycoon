@@ -1,5 +1,5 @@
 
-import {Router} from 'express';
+import express, { Router} from 'express';
 import {getLoans, createLoan, getLoansByID, getLoansRequests, getLoansOutstanding} from './controller/loan_controller'
 import {getPersons, createPerson} from './controller/person_controller'
 import {getBanks, createBank, getMoneyByID, editMoneyByID} from './controller/bank_controller'
@@ -36,6 +36,6 @@ router.route('/bank/:bankID/')
 router.route('/bank/money/')
 	.post(editMoneyByID);
 
-
+//router.route('/*').get( (req, res) => res.sendFile(express.static('../dist')));
 
 export default router;
