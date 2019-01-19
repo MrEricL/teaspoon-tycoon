@@ -5,9 +5,7 @@ const Person  = db.define('person', {
 	userID: {
 		type: Sequelize.INTEGER,
 		primaryKey: true,
-		validate: {
-			notNull: true
-		}
+		autoIncrement: true,
 	}, 
 	name: {
 		type: Sequelize.STRING,

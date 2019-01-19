@@ -2,7 +2,7 @@
 import {Router} from 'express';
 import {getLoans, createLoan, getLoansByID, getLoansRequests, getLoansOutstanding} from './controller/loan_controller'
 import {getPersons, createPerson} from './controller/person_controller'
-import {getBanks, createBank} from './controller/bank_controller'
+import {getBanks, createBank, getMoneyByID, editMoneyByID} from './controller/bank_controller'
 
 const router = Router();
 
@@ -29,6 +29,12 @@ router.route('/person')
 router.route('/bank')
 	.get(getBanks)
 	.post(createBank);
+
+router.route('/money/:bankID/')
+	.get(getMoneyByID);
+
+router.route('/money/')
+	.post(editMoneyByID);
 
 
 
