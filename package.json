@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack -r esm",
-    "dev-client": "webpack-dev-server -r esm --open",
+    "dev-client": "webpack-dev-server --mode development -r esm",
     "dev-server": "nodemon -r esm server/server.js",
     "start": "node -r esm server/server.js",
     "heroku-postbuild": "yarn build"
@@ -32,5 +32,8 @@
     "sequelize": "^4.42.0",
     "webpack": "^4.28.4",
     "webpack-cli": "^3.2.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.1.14"
   }
 }
