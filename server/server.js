@@ -4,12 +4,12 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import path from 'path';
 import apiRouter from './router';
-import formData from 'express-form-data'
+//import formData from 'express-form-data'
 
 const app = express();
 app.use(cors());
 
-app.use(formData.union());
+//app.use(formData.union());
 
 app.use(express.static('dist'));
 
