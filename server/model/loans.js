@@ -4,22 +4,16 @@ import db from '../db';
 const Loans  = db.define('loan', {
 	userID: {
 		type: Sequelize.INTEGER,
-		validate: {
-			notNull: true
-		}
+		allowNull: false,
 	}, 
 	loanID: {
 		type: Sequelize.INTEGER,
 		primaryKey: true,
-		validate: {
-			notNull: true 
-		}
+		allowNull: false,
 	}, 
 	amount: {
 		type: Sequelize.DOUBLE,
-		validation: {
-			notNull: true
-		}
+		allowNull: false,
 	}, 
 	desc: {
 		type: Sequelize.TEXT,

@@ -9,22 +9,18 @@ const Person  = db.define('person', {
 	}, 
 	name: {
 		type: Sequelize.STRING,
-		validate: {
-			notNull: true 
-		}
+		allowNull: false,
 	}, 
 	email: {
 		type: Sequelize.STRING,
+		allowNull: false,
 		validate: {
-			notNull: true,
 			isEmail: true
 		}
 	},
 	pass: {
 		type: Sequelize.STRING,
-		validate: {
-			notNull: true,
-		}		
+		allowNull: false,
 	}
 });
 
