@@ -2,6 +2,7 @@ import express from 'express';
 import Sequelize from 'sequelize';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import morgan from 'morgan';
 import path from 'path';
 import apiRouter from './router';
 //import formData from 'express-form-data'
@@ -15,6 +16,7 @@ app.use(express.static('dist'));
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(morgan('dev'));
 app.disable('x-powered-by');
 app.use(apiRouter);
 
