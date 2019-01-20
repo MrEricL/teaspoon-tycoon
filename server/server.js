@@ -4,16 +4,14 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import morgan from 'morgan';
 import path from 'path';
+import formidableMiddleware from 'express-formidable';
 import apiRouter from './router';
-//import formData from 'express-form-data'
 
 const app = express();
 app.use(cors());
 
-//app.use(formData.union());
-
+app.use(formidableMiddleware());
 app.use(express.static('dist'));
-
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
