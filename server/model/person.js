@@ -21,7 +21,20 @@ const Person  = db.define('person', {
 	pass: {
 		type: Sequelize.STRING,
 		allowNull: false,
+	},
+	town:{
+		type: Sequelize.STRING,
+		allowNull: false,
+	},
+	postal :{
+		type: Sequelize.INTEGER,
+		allowNull: false,
+	},
+	country: {
+		type: Sequelize.STRING,
+		allowNull: false,
 	}
+
 });
 
 Person.sync();

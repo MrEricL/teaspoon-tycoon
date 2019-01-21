@@ -76,11 +76,13 @@ export const payLoanOutstanding = (req, res) => {
 }
 
 export const getRequestedLoansByBank = (req, res) =>{
-	let bankID = Number(req.body.bankID);
+	let bankID = Number(req.params.bankID);
+	let country = Number(req.params.country);
 
 	var loans = Loans.findAll({
 	  where: {
-	    bankID: null
+	    bankID: null,
+	    country: country
 	  }
 	});
 
@@ -91,7 +93,6 @@ export const getRequestedLoansByBank = (req, res) =>{
 	});
 
 	Promise.all([loans, rejects]).then(obj =>{
-		
 		let ret = [];
 		let flag = false;
 		for(var i = 0; i < obj[0].length; i++) {
@@ -106,12 +107,45 @@ export const getRequestedLoansByBank = (req, res) =>{
 				ret.push(obj[0][i])
 			}
 		}
-		res.send(ret);
-		
+		res.send(ret);	
 	});	
-
 }
 
+export const getAcceptedLoansByBank = (req, res) =>{
+	let bankID = Number(req.params.bankID);
+	Loans.findAll({
+	  where: {
+	    bankID:  bankID
+	  }
+	}).then(function(rows){
+		res.send(rows);
+	});
+}
 
+export const getRequestedLoansByPerson = (req, res) =>{
+	let userID = Number(req.params.userID);
+	Loans.findAll({
+	  where: {
+	    userID: userID,
+	    bankID:  null
+	  }
+	}).then(function(rows){
+		res.send(rows);
+	});
+}
+
+export const getAcceptedLoansByPerson = (req, res) =>{
+	let userID = Number(req.params.userID);
+	Loans.findAll({
+	  where: {
+	    userID: userID,
+	    bankID: {
+	    	$not: null
+	    }
+	  }
+	}).then(function(rows){
+		res.send(rows);
+	});
+}
 
 

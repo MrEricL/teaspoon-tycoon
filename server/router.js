@@ -1,9 +1,10 @@
 
 import express, { Router} from 'express';
-import {getLoans, createLoan, getLoansByID, getLoansRequests, getLoansOutstanding, acceptLoanRequest, payLoanOutstanding, getRequestedLoansByBank} from './controller/loan_controller'
+import {getLoans, createLoan, getLoansByID, getLoansRequests, getLoansOutstanding, acceptLoanRequest, payLoanOutstanding, getRequestedLoansByBank, getRequestedLoansByPerson, getAcceptedLoansByPerson, getAcceptedLoansByBank} from './controller/loan_controller'
 import {getPersons, createPerson, validatePerson} from './controller/person_controller'
 import {getBanks, createBank, getMoneyByID, editMoneyByID, validateBank} from './controller/bank_controller'
 import {rejectLoan} from './controller/reject_controller'
+import {getCountryCount} from './controller/location_controller'
 
 
 const router = Router();
@@ -28,8 +29,18 @@ router.route('/loans/outstanding')
 router.route('/loans/:id')
 	.get(getLoansByID);
 
-router.route('/loans/bank')
-	.post(getRequestedLoansByBank)
+router.route('/loans/bank/requested/:bankID')
+	.get(getRequestedLoansByBank);
+
+router.route('/loans/bank/accepted/:bankID')
+	.get(getAcceptedLoansByBank);
+
+router.route('/loans/person/requested/:userID')
+	.get(getRequestedLoansByPerson);
+
+router.route('/loans/person/accepted/:userID')
+	.get(getAcceptedLoansByPerson);
+
 
 // Person Endpoints ============================================================
 router.route('/person')
@@ -58,7 +69,9 @@ router.route('/bank/:email/:pass')
 router.route('/reject')
 	.post(rejectLoan);
 
-
+// Location Endpoints ============================================================
+router.route('/location/country')
+	.get(getCountryCount);
 
 // End =========================================================================
 export default router;

@@ -31,7 +31,20 @@ const Bank = db.define('bank', {
 		type: Sequelize.DOUBLE,
 		allowNull: false,
 		defaultValue: 0
+	},
+	town:{
+		type: Sequelize.STRING,
+		allowNull: false,
+	},
+	postal :{
+		type: Sequelize.INTEGER,
+		allowNull: false,
+	},
+	country: {
+		type: Sequelize.STRING,
+		allowNull: false,
 	}
+
 });
 
 Bank.sync();
