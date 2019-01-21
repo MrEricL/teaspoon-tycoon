@@ -7,7 +7,6 @@ export const getBanks = (req, res) => {
 	});	
 }
 
-
 export const createBank = (req, res) => {
 	Bank.create(req.body);
 	res.send(req.body);
@@ -28,9 +27,6 @@ export const getMoneyByID = (req, res) => {
 	}).catch(function (err) {
 		res.send("Invalid");
     });
-  
-
-	//res.send(req.body);
 }
 
 export const editMoneyByID = (req, res) => {
@@ -53,9 +49,24 @@ export const editMoneyByID = (req, res) => {
 		}
 	)));
 
-	res.send("A-OK");
-
+	res.send("Money edited!");
 }
+
+export const validateBank = (req, res) => {
+
+	let email = req.params.email;
+	let password = req.params.pass;
+
+	Bank.findAll({
+	  where: {
+	    email: email,
+	    pass: password
+	  }
+	}).then(function(rows){
+		res.send(rows);
+	});
+}
+
 
 
 

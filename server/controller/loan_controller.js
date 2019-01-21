@@ -1,4 +1,5 @@
 import Loans from '../model/loans';
+import Reject from '../model/reject';
 
 // Loan Endpoints =====================================================
 export const getLoans = (req, res) => {
@@ -46,3 +47,71 @@ export const getLoansOutstanding = (req, res) => {
 		res.send(rows);
 	});
 }
+
+export const acceptLoanRequest = (req, res) => {
+	let loanID = req.body.loanID;
+	let bankID = req.body.bankID;
+
+	Loans.update(
+		{bankID: bankID, outstand: true},
+		{where: {loanID}}
+		)
+	.then(function(rows){
+		console.log(rows);
+		res.send(rows);
+	});
+}
+
+export const payLoanOutstanding = (req, res) => {
+	let loanID = req.body.loanID;
+
+	Loans.update(
+		{outstand: false},
+		{where: {loanID}}
+		)
+	.then(function(rows){
+		console.log(rows);
+		res.send(rows);
+	});
+}
+
+export const getRequestedLoansByBank = (req, res) =>{
+	let bankID = Number(req.body.bankID);
+
+	var loans = Loans.findAll({
+	  where: {
+	    bankID: null
+	  }
+	});
+
+	var rejects = Reject.findAll({
+	  	where: {
+	    	bankID: bankID
+	  	}
+	});
+
+	Promise.all([loans, rejects]).then(obj =>{
+		
+		let ret = [];
+		let flag = false;
+		for(var i = 0; i < obj[0].length; i++) {
+			flag = false;
+			for(var j = 0; j < obj[1].length; j++) {
+				if (obj[0][i].loanID == obj[1][j].loanID){
+					flag = true;
+					break;
+				}
+			}
+			if (!flag){
+				ret.push(obj[0][i])
+			}
+		}
+		res.send(ret);
+		
+	});	
+
+}
+
+
+
+
