@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { Router, Route, Link } from 'react-router-dom';
 
+import { logOutUser } from '../actions/sessionActions';
+import history from '../history';
 import Home from './home';
 import RegistrationForm from './registration';
-import LoanPageUser from './loanpageuser';
+import LoginForm from './login';
 
 const App = ({loggedin, logOut}) => (
   <Router history={history}>
@@ -31,16 +33,12 @@ const App = ({loggedin, logOut}) => (
   </Router>
 )
 
-function mapStateToProps(state, ownProps) {
-  return {
-    loggedin: state.session,
-  };
-}
+const mapStateToProps = (state, ownProps) => ({
+  loggedin: state.session.usertype !== '',
+})
 
-function mapDispatchToProps(dispatch) {
-  return {
-    logOut: () => logOutUser(),
-  };
-}
+const mapDispatchToProps = (dispatch) => ({
+  logOut: () => dispatch(logOutUser()),
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

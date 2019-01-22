@@ -6,6 +6,6 @@ function resolveInternal(path) {
   return API_URL + path;
 }
 
-export function postInternal(path, data, callback) {
-  return axios.post(resolveInternal(path), data).then(callback);
+export function postInternal(path, data, callback, config = {}) {
+  return axios.post(resolveInternal(path), data, config).then(callback);
 }
