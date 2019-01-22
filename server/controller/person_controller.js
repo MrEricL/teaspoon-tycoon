@@ -9,8 +9,8 @@ export const getPersons = (req, res) => {
 
 
 export const createPerson = (req, res) => {
-	Person.create(req.fields);
-	res.send(req.fields);
+	Person.create(req.body);
+	res.send(req.body);
 }
 
 
