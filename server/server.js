@@ -5,6 +5,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import path from 'path';
 import multer from 'multer';
+import passport from 'passport';
 import apiRouter from './router';
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(express.static('dist'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
+app.use(passport.initialize());
 app.disable('x-powered-by');
 app.use(apiRouter);
 

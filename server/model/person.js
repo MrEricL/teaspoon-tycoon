@@ -1,5 +1,6 @@
 import Sequelize from 'sequelize'
 import db from '../db';
+import { hashPassword, comparePassword } from '../services/common';
 
 const Person  = db.define('person', {
 	userID: {
@@ -19,7 +20,7 @@ const Person  = db.define('person', {
 		}
 	},
 	pass: {
-		type: Sequelize.STRING,
+		type: Sequelize.TEXT,
 		allowNull: false,
 	},
 	town:{
@@ -34,9 +35,10 @@ const Person  = db.define('person', {
 		type: Sequelize.STRING,
 		allowNull: false,
 	}
-
 });
 
+Person.beforeCreate(hashPassword);
+Person.prototype.comparePassword = comparePassword;
 Person.sync();
 
 

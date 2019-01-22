@@ -1,11 +1,14 @@
 
 import express, { Router} from 'express';
 import {getLoans, createLoan, getLoansByID, getLoansRequests, getLoansOutstanding, acceptLoanRequest, payLoanOutstanding, getRequestedLoansByBank, getRequestedLoansByPerson, getAcceptedLoansByPerson, getAcceptedLoansByBank} from './controller/loan_controller'
-import {getPersons, createPerson, validatePerson} from './controller/person_controller'
-import {getBanks, createBank, getMoneyByID, editMoneyByID, validateBank} from './controller/bank_controller'
+import {getPersons, createPerson} from './controller/person_controller'
+import {getBanks, createBank, getMoneyByID, editMoneyByID} from './controller/bank_controller'
 import {rejectLoan} from './controller/reject_controller'
 import {getCountryCount} from './controller/location_controller'
 
+import { requireLoginUser } from './services/passport-user';
+import { requireLoginBank } from './services/passport-bank';
+import * as Login from './controller/login_controller';
 
 const router = Router();
 
@@ -47,8 +50,7 @@ router.route('/person')
 	.get(getPersons)
 	.post(createPerson);
 
-router.route('/person/:email/:pass')
-	.get(validatePerson);
+router.post('/person/login', requireLoginUser(), Login.loginPerson);
 
 // Bank Endpoints ============================================================
 router.route('/bank')
@@ -61,9 +63,7 @@ router.route('/bank/:bankID/')
 router.route('/bank/money/')
 	.post(editMoneyByID);
 
-
-router.route('/bank/:email/:pass')
-	.get(validateBank);
+router.post('/bank/login', requireLoginBank(), Login.loginBank);
 
 // Reject Endpoints ============================================================
 router.route('/reject')

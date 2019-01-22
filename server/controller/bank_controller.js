@@ -51,22 +51,3 @@ export const editMoneyByID = (req, res) => {
 
 	res.send("Money edited!");
 }
-
-export const validateBank = (req, res) => {
-
-	let email = req.params.email;
-	let password = req.params.pass;
-
-	Bank.findAll({
-	  where: {
-	    email: email,
-	    pass: password
-	  }
-	}).then(function(rows){
-		res.send(rows);
-	});
-}
-
-
-
-
