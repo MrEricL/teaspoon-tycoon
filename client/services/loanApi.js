@@ -13,3 +13,11 @@ export function userGetAcceptedLoans(userid) {
 export function userCreateLoan(data) {
   return postInternal('loans/requests', data);
 }
+
+export function bankAcceptLoan(data) {
+  return postInternal('loans/accept', data);
+}
+
+export function bankRejectLoan(data) {
+  return postInternal('reject', data);
+}

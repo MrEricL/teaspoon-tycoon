@@ -47,10 +47,16 @@ class LoanPageUser extends Component {
         {this.state.opt === 'show' && (
           <>
           <div>
-            {this.props.loans.requested.map((e) => <LoanCard {...e} />)}
+            Pending Requests
+            <div>
+              {this.props.loans.requested.map((e) => <LoanCard {...e} />)}
+            </div>
           </div>
           <div>
-            {this.props.loans.accepted.map((e) => <LoanCard {...e} />)}
+            Accepted Requests
+            <div>
+              {this.props.loans.accepted.map((e) => <LoanCard {...e} />)}
+            </div>
           </div>
           </>
         )}

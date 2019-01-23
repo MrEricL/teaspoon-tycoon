@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import * as types from './actionTypes';
-import {userGetRequestedLoans, userGetAcceptedLoans, userCreateLoan} from '../services/loanApi';
+import {userGetRequestedLoans, userGetAcceptedLoans, userCreateLoan, bankAcceptLoan, bankRejectLoan} from '../services/loanApi';
 
 function getLoanSuccess(requested, accepted) {
   return {
@@ -33,4 +33,34 @@ export function createLoan(data) {
       dispatch(createLoanSuccess());
     })
   }
+}
+
+function acceptLoanSuccess() {
+  return {
+    type: types.ACCEPT_LOAN_REQ,
+  }
+}
+
+export function acceptLoan(userID, loanID) {
+  return function(dispatch) {
+    return bankAcceptLoan({bankID: userID, loanID}).then(response => {
+      dispatch(getLoans(userID));
+      dispatch(acceptLoanSuccess());
+    });
+  };
+}
+
+function rejectLoanSuccess() {
+  return {
+    type: types.REJECT_LOAN_REQ,
+  }
+}
+
+export function rejectLoan(userID, loanID) {
+  return function(dispatch) {
+    return bankRejectLoan({bankID: userID, loanID}).then(response => {
+      dispatch(getLoans(userID));
+      dispatch(rejectLoanSuccess());
+    });
+  };
 }
