@@ -17,7 +17,7 @@ const App = ({loggedin, logOut}) => (
         {loggedin ?
             (
               <>
-              <li><Link to='loans'>Loans</Link></li>
+              <li><Link to='loan'>Loans</Link></li>
               <a href="/logout" onClick={(e) => {e.preventDefault(); logOut()}}>Log out</a>
               </>
             ) : (
@@ -33,7 +33,7 @@ const App = ({loggedin, logOut}) => (
       <Route exact path='/' component={Home} />
       <Route exact path='/login' component={LoginForm} />
       <Route exact path='/register' component={RegistrationForm} />
-      <Route exact path='/loans' component={LoanPageUser} />
+      <Route exact path='/loan' component={LoanPageUser} />
     </div>
   </Router>
 )
