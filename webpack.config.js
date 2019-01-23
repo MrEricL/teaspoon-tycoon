@@ -44,5 +44,6 @@ module.exports = {
     contentBase: './dist',
     compress: true,
     port: 9000,
+    historyApiFallback: true,
   },
 }
