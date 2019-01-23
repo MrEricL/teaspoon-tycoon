@@ -9,8 +9,8 @@ const Loans  = db.define('loan', {
 	loanID: {
 		type: Sequelize.INTEGER,
 		primaryKey: true,
-		allowNull: false,
-	}, 
+		autoIncrement: true,
+	},
 	amount: {
 		type: Sequelize.DOUBLE,
 		allowNull: false,
