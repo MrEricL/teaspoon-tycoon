@@ -1,25 +1,17 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
-import Home from './views/home.js';
-import RegistrationForm from './views/registration.js';
+import App from './views/App';
+import rootReducer from './reducers';
 
-class App extends Component {
-  render() {
-    return (<Router>
-      <div>
-        <ul>
-          <li><Link to='register'>Register</Link></li>
-        </ul>
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
-        <hr />
-        <Route exact path='/' component={Home} />
-        <Route exact path='/register' component={RegistrationForm} />
-      </div>
-    </Router>)
-  }
-}
-
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('app')
+);
