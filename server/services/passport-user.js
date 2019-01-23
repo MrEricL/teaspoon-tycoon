@@ -12,7 +12,7 @@ const jwtOptions = {
 	secretOrKey: process.env.AUTH_SECRET,
 };
 
-passport.use(new LocalStrategy(localOptions, (email, password, done) => {
+passport.use('userlocal', new LocalStrategy(localOptions, (email, password, done) => {
 	Person.findOne({
 		attributes: ['email', 'pass', 'userID'],
 		where: {
@@ -31,7 +31,7 @@ passport.use(new LocalStrategy(localOptions, (email, password, done) => {
 	})
 }));
 
-passport.use(new JwtStrategy(jwtOptions, (payload, done) => {
+passport.use('userjwt', new JwtStrategy(jwtOptions, (payload, done) => {
 	Person.findById(payload.sub)
 		.then(user => {
 			if (user) {
@@ -44,7 +44,7 @@ passport.use(new JwtStrategy(jwtOptions, (payload, done) => {
 
 export function requireLoginUser(...groups) {
 	return [
-		passport.authenticate(['jwt', 'local'], { session: false }),
+		passport.authenticate(['userjwt', 'userlocal'], { session: false }),
 		(req, res, next) => {
 			if (groups.length < 1 || (req.user && groups.includes(req.user.type))) {
 				return next();
