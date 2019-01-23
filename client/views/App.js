@@ -8,6 +8,7 @@ import history from '../history';
 import Home from './home';
 import RegistrationForm from './registration';
 import LoginForm from './login';
+import LoanPageUser from './loanpageuser';
 
 const App = ({loggedin, logOut}) => (
   <Router history={history}>
@@ -15,7 +16,10 @@ const App = ({loggedin, logOut}) => (
       <ul>
         {loggedin ?
             (
+              <>
+              <li><Link to='loans'>Loans</Link></li>
               <a href="/logout" onClick={(e) => {e.preventDefault(); logOut()}}>Log out</a>
+              </>
             ) : (
               <>
               <li><Link to='register'>Register</Link></li>
@@ -29,6 +33,7 @@ const App = ({loggedin, logOut}) => (
       <Route exact path='/' component={Home} />
       <Route exact path='/login' component={LoginForm} />
       <Route exact path='/register' component={RegistrationForm} />
+      <Route exact path='/loans' component={LoanPageUser} />
     </div>
   </Router>
 )
