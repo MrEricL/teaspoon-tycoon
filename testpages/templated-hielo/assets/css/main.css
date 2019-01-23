@@ -4045,6 +4045,12 @@
 			height: 50vh !important;
 		}
 
+		.banner.part {
+			padding: 0;
+			min-height: 20vh;
+			height: 20vh !important;
+		}
+
 		.banner:after {
 			-moz-pointer-events: none;
 			-webkit-pointer-events: none;
