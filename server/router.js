@@ -57,13 +57,16 @@ router.route('/bank')
 	.get(getBanks)
 	.post(createBank);
 
-router.route('/bank/:bankID/')
-	.get(getMoneyByID);
-
 router.route('/bank/money/')
 	.post(editMoneyByID);
 
+
 router.post('/bank/login', requireLoginBank(), Login.loginBank);
+
+router.route('/bank/:bankID/')
+	.get(getMoneyByID);
+
+
 
 // Reject Endpoints ============================================================
 router.route('/reject')
