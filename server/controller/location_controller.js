@@ -22,6 +22,8 @@ export const getCountryCount = (req, res) => {
 				ret[e[country]]  = 1;
 			}
 		})
+	}).catch(function (err) {
+  		res.send(err);
 	});
 
 	res.send(ret);

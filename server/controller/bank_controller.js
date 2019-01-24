@@ -4,11 +4,15 @@ import Bank from '../model/bank';
 export const getBanks = (req, res) => {
 	Bank.findAll().then(function(rows) {
 		res.send(rows);
+	}).catch(function (err) {
+  		res.send(err);
 	});	
 }
 
 export const createBank = (req, res) => {
-	Bank.create(req.body);
+	Bank.create(req.body).catch(function (err) {
+  		res.send(err);
+	});
 	res.send(req.body);
 }
 
@@ -25,7 +29,7 @@ export const getMoneyByID = (req, res) => {
 	}).then(function(rows){
 		res.send({"money" : rows[0].money});
 	}).catch(function (err) {
-		res.send("Invalid");
+		res.send(err);
     });
 }
 
@@ -47,7 +51,9 @@ export const editMoneyByID = (req, res) => {
 		).then(function(rows){
 			console.log(rows);
 		}
-	)));
+	))).catch(function (err) {
+  		res.send(err);
+	});
 
 	res.send("Money edited!");
 }

@@ -5,11 +5,15 @@ import Reject from '../model/reject';
 export const getLoans = (req, res) => {
 	Loans.findAll().then(function(rows) {
 		res.send(rows);
+	}).catch(function (err) {
+  		res.send(err);
 	});	
 }
 
 export const createLoan = (req, res) =>{
-	Loans.create(req.body);
+	Loans.create(req.body).catch(function (err) {
+  		res.send(err);
+	});
 	res.send(req.body);
 }
 
@@ -23,6 +27,8 @@ export const getLoansByID = (req, res) => {
 	  }
 	}).then(function(rows){
 		res.send(rows);
+	}).catch(function (err) {
+  		res.send(err);
 	});
 }
 
@@ -34,6 +40,8 @@ export const getLoansRequests = (req, res) => {
 	  }
 	}).then(function(rows){
 		res.send(rows);
+	}).catch(function (err) {
+  		res.send(err);
 	});
 }
 
@@ -45,6 +53,8 @@ export const getLoansOutstanding = (req, res) => {
 	  }
 	}).then(function(rows){
 		res.send(rows);
+	}).catch(function (err) {
+  		res.send(err);
 	});
 }
 
@@ -59,6 +69,8 @@ export const acceptLoanRequest = (req, res) => {
 	.then(function(rows){
 		console.log(rows);
 		res.send(rows);
+	}).catch(function (err) {
+  		res.send(err);
 	});
 }
 
@@ -72,6 +84,8 @@ export const payLoanOutstanding = (req, res) => {
 	.then(function(rows){
 		console.log(rows);
 		res.send(rows);
+	}).catch(function (err) {
+  		res.send(err);
 	});
 }
 
@@ -84,12 +98,16 @@ export const getRequestedLoansByBank = (req, res) =>{
 	    bankID: null,
 	    country: country
 	  }
+	}).catch(function (err) {
+  		res.send(err);
 	});
 
 	var rejects = Reject.findAll({
 	  	where: {
 	    	bankID: bankID
 	  	}
+	}).catch(function (err) {
+  		res.send(err);
 	});
 
 	Promise.all([loans, rejects]).then(obj =>{
@@ -108,6 +126,8 @@ export const getRequestedLoansByBank = (req, res) =>{
 			}
 		}
 		res.send(ret);	
+	}).catch(function (err) {
+  		res.send(err);
 	});	
 }
 
@@ -119,6 +139,8 @@ export const getAcceptedLoansByBank = (req, res) =>{
 	  }
 	}).then(function(rows){
 		res.send(rows);
+	}).catch(function (err) {
+  		res.send(err);
 	});
 }
 
@@ -131,6 +153,8 @@ export const getRequestedLoansByPerson = (req, res) =>{
 	  }
 	}).then(function(rows){
 		res.send(rows);
+	}).catch(function (err) {
+  		res.send(err);
 	});
 }
 
@@ -145,6 +169,8 @@ export const getAcceptedLoansByPerson = (req, res) =>{
 	  }
 	}).then(function(rows){
 		res.send(rows);
+	}).catch(function (err) {
+  		res.send(err);
 	});
 }
 
