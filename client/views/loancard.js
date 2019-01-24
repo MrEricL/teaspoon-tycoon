@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
@@ -25,10 +26,10 @@ class LoanCard extends Component {
         {this.props.outstand && <div>Outstanding</div>}
 
         {this.props.usertype === 'bank' && !this.props.bankID && (
-          <div>
-            <button type="submit" onClick={e => this.accept(e)}>Accept</button>
-            <button type="submit" onClick={e => this.reject(e)}>Reject</button>
-          </div>
+          <ul className="actions">
+            <li><Link to="#" className="fakebutton" onClick={e => this.accept(e)}>Accept</Link></li>
+            <li><Link to="#" className="fakebutton" onClick={e => this.accept(e)}>Reject</Link></li>
+          </ul>
         )}
       </div>
     );
