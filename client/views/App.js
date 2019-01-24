@@ -12,31 +12,36 @@ import LoanPageUser from './loanpageuser';
 
 const App = ({loggedin, logOut}) => (
   <Router history={history}>
+    <>
+    <header class="header-container">
+      <div class="logo"><Link to="/">Teaspoon Tycoon</Link></div>
+      <nav>
+        <ul className="links" role="navigation">
+          {loggedin ?
+              (
+                <>
+                <li><Link to='/loan'>Loans</Link></li>
+                <li className="links_r"><a href="/logout" onClick={(e) => {e.preventDefault(); logOut()}}>Log out</a></li>
+                </>
+              ) : (
+                <>
+                <li className="links_r"><Link to='/register'>Register</Link></li>
+                <li><Link to='/login'>Login</Link></li>
+                </>
+              )
+          }
+        </ul>
+      </nav>
+    </header>
     <div>
-      <ul>
-        {loggedin ?
-            (
-              <>
-              <li><Link to='loan'>Loans</Link></li>
-              <a href="/logout" onClick={(e) => {e.preventDefault(); logOut()}}>Log out</a>
-              </>
-            ) : (
-              <>
-              <li><Link to='register'>Register</Link></li>
-              <li><Link to='login'>Login</Link></li>
-              </>
-            )
-        }
-      </ul>
-
-      <hr />
       <Route exact path='/' component={Home} />
       <Route exact path='/login' component={LoginForm} />
       <Route exact path='/register' component={RegistrationForm} />
       <Route exact path='/loan' component={LoanPageUser} />
     </div>
+</>
   </Router>
-)
+  )
 
 const mapStateToProps = (state, ownProps) => ({
   loggedin: state.session.usertype !== '',
