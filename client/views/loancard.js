@@ -23,6 +23,7 @@ class LoanCard extends Component {
         <div>Amount: ${this.props.amount}</div>
         <div>Description: {this.props.desc}</div>
         <div>Bank: {this.props.bankID}</div>
+        <div>Last Updated: {new Date(this.props.updatedAt).toString()}</div>
         {this.props.outstand && <div>Outstanding</div>}
 
         {this.props.usertype === 'bank' && (
