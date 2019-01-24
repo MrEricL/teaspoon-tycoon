@@ -14,7 +14,7 @@ class Header extends Component {
             (
               <>
               <Link to='/loan'>Loans</Link>
-              <a href="/logout" onClick={(e) => {e.preventDefault(); logOut()}}>Log out</a>
+              <a href="/logout" onClick={(e) => {e.preventDefault(); this.props.logOut()}}>Log out</a>
               </>
             ) : (
               <>
