@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-import {login} from '../services/sessionApi';
+import {register, login} from '../services/sessionApi';
 
 function getUserType(userinfo) {
   for (let i of ['user', 'bank']) {
@@ -35,4 +35,18 @@ export function logOutUser() {
   return {
     type: types.LOG_OUT,
   };
+}
+
+export function registrationSuccess() {
+  return {
+    type: types.REGISTER_SUCCESS,
+  };
+}
+
+export function registerUser(credentials) {
+  return function(dispatch) {
+    return register(credentials).then(response => {
+      dispatch(registrationSuccess());
+    });
+  }
 }

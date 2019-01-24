@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+
+import * as sessionActions from '../actions/sessionActions';
 import { COUNTRIES } from '../data/countries';
 import { postInternal } from '../common';
 import { TextBox } from './common';
@@ -9,14 +13,7 @@ class RegistrationForm extends Component {
   register(event) {
     event.preventDefault();
     let formdata = new FormData(event.target);
-    console.log(formdata);
-    postInternal(formdata.get('porb'), formdata, (res, err) => {
-      if (err) {
-        console.err(err);
-      }
-
-      console.log(res);
-    });
+    this.props.actions.registerUser(formdata);
   }
 
   render() {
@@ -72,4 +69,10 @@ class RegistrationForm extends Component {
   }
 }
 
-export default RegistrationForm;
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(sessionActions, dispatch),
+  };
+}
+
+export default connect(null, mapDispatchToProps)(RegistrationForm);
