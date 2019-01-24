@@ -7,13 +7,19 @@ Changing the world with a one teaspoon of a loan
 * Reload if images aren't appearing
 * Slight issues with running it on Heroku
 
-#### About
+### About
 
 A speculative web application to make microfinancing easier; connects individuals with banks both for loans and physical capital.
 
 
-#### How It's Made
+### How It's Made
 
 * React + Redux
 * Node + Express
 * Postgresql + Sequlize
+
+
+### Stretch Goals
+
+* Implement a profile page
+* Hook it up with Stripe
