@@ -1,5 +1,7 @@
 ## Teaspoon Tycoon
-Changing the world with a one teaspoon of a loan
+by Eric Li and Jeffrey Lin
+
+You can be a tycoon; all you need is a teaspoon of a loan to start
 
 [Presentation](https://docs.google.com/presentation/d/1zvmNMgcl3oOnWcpe2Tlei8je7U7lP9izRwchRBVlzS8/edit?usp=drive_web&ouid=109676444814068866609)
 
