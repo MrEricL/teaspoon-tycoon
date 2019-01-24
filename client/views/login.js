@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as sessionActions from '../actions/sessionActions';
@@ -15,15 +16,38 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <form id="regform" onSubmit={e => this.login(e)}>
-        <TextBox type="text" name="email" label="Email" />
-        <TextBox type="password" name="pass" label="Password" />
+      <>
+      <section className="banner part">
+        <article>
+          <img src="images/slide03.jpg" alt="" />
+          <div className="inner">
+            <header>
+              <p style={{opacity: "100"}}>microfinance the future</p>
+              <h3 style={{fontSize: "3em"}}>Login</h3>
+            </header>
+          </div>
+        </article>
+      </section>
 
-        <p>I am a</p>
-        <TextBox type="radio" value="person" name="porb" set={true}/>
-        <TextBox type="radio" value="bank" name="porb" />
-        <button type="submit">Login</button>
-      </form>
+      <section id="one" className="wrapper style2" style={{paddingTop: "20px", paddingRight: "150px", paddingLeft: "150px"}}>
+        <label>Don't have an account?</label>
+        <Link to="/login" className="button alt">Login Instead</Link>
+
+        <form id="loginform" onSubmit={e => this.login(e)}>
+          <TextBox type="text" name="email" label="Email" />
+          <TextBox type="password" name="pass" label="Password" />
+
+          <label>I registered as a</label>
+          <select name="porb" id="porb">
+            <option value="person">Person</option>
+            <option value="bank">Bank</option>
+          </select>
+          <br />
+          <br />
+          <button type="submit">Login</button>
+        </form>
+      </section>
+      </>
     );
   }
 }
