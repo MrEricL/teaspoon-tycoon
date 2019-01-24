@@ -18,12 +18,10 @@ class LoanCard extends Component {
 
   render() {
     return (
-      <div>
+      <div className={this.props.bankID ? "card-accept" : "card-pend"}>
         <div>Loan Request #{this.props.loanID}</div>
         <div>Amount: ${this.props.amount}</div>
         <div>Description: {this.props.desc}</div>
-        <div>Bank: {this.props.bankID}</div>
-        <div>Last Updated: {new Date(this.props.updatedAt).toString()}</div>
         {this.props.outstand && <div>Outstanding</div>}
 
         {this.props.usertype === 'bank' && (

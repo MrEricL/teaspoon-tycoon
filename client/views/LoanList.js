@@ -6,12 +6,12 @@ import LoanCard from './loancard';
 class LoanList extends Component {
   render() {
     return (
-      <div>
-        {this.props.title}
-        <div>
-          {this.props.loans.map((e) => <LoanCard {...e} />)}
-        </div>
+      <>
+      {this.props.title}
+      <div class="cardbox">
+        {this.props.loans.map((e) => <LoanCard {...e} />)}
       </div>
+      </>
     );
   }
 }
