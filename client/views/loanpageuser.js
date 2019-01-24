@@ -46,33 +46,52 @@ class LoanPageUser extends Component {
 
   render() {
     return (
-      <div>
-        {this.props.usertype === 'user' && (
-          <>
-          <TextBox type="radio" value="Loan Requests" name="lorr" onchange={e => this.changeMode(e)} set={true}/>
-          <TextBox type="radio" value="Request a Loan" name="lorr" onchange={e => this.changeMode(e)} />
-          </>
-        )}
+      <>
+      <section className="banner part">
+        <article>
+          <img src="images/slide04.jpg" alt="" />
+          <div className="inner">
+            <header>
+              <p style={{opacity: "100"}}>microfinance the future</p>
+              <h3 style={{fontSize: "3em"}}>
+                Loans
+              </h3>
+            </header>
+          </div>
+        </article>
+      </section>
 
-        {this.props.usertype === 'bank' && (
-          <>
-          <TextBox type="radio" value="Pending Requests" name="lorr" onchange={e => this.changeMode(e)} set={true}/>
-          <TextBox type="radio" value="Accepted Requests" name="lorr" onchange={e => this.changeMode(e)} />
-          </>
-        )}
 
-        {(this.state.opt === 'show' || this.state.opt === 'pend') && (
-          <LoanList title="Pending Requests" loans={this.props.loans.requested} />
-        )}
+      <section id="one" className="wrapper style2" style={{paddingTop: "20px", paddingRight: "150px", paddingLeft: "150px"}}>
+        <div>
+          {this.props.usertype === 'user' && (
+            <select name="lorr" onChange={e => this.changeMode(e)}>
+              <option value="Loan Requests">Loan Requests</option>
+              <option value="Request a Loan">Request a Loan</option>
+            </select>
+          )}
 
-        {(this.state.opt === 'show' || this.state.opt === 'acc') && (
-          <LoanList title="Accepted Requests" loans={this.props.loans.accepted} />
-        )}
+          {this.props.usertype === 'bank' && (
+            <select name="lorr" onChange={e => this.changeMode(e)}>
+              <option value="Pending Requests">Pending Requests</option>
+              <option value="Accepted Requests">Accepted Requests</option>
+            </select>
+          )}
 
-        {this.state.opt === 'req' && (
-          <RequestLoanForm />
-        )}
-      </div>
+          {(this.state.opt === 'show' || this.state.opt === 'pend') && (
+            <LoanList title="Pending Requests" loans={this.props.loans.requested} />
+          )}
+
+          {(this.state.opt === 'show' || this.state.opt === 'acc') && (
+            <LoanList title="Accepted Requests" loans={this.props.loans.accepted} />
+          )}
+
+          {this.state.opt === 'req' && (
+            <RequestLoanForm />
+          )}
+        </div>
+      </section>
+      </>
     );
   }
 }
