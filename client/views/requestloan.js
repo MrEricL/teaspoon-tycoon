@@ -22,7 +22,7 @@ class RequestLoanForm extends Component {
 
         <label htmlFor="desc">What will the loan be used for?</label>
         <textarea name="desc" id="desc"></textarea>
-        <button type="submit">Register</button>
+        <button type="submit">Request Loan</button>
       </form>
     );
   }
