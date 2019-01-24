@@ -31,7 +31,7 @@ class LoginForm extends Component {
 
       <section id="one" className="wrapper style2" style={{paddingTop: "20px", paddingRight: "150px", paddingLeft: "150px"}}>
         <label>Don't have an account?</label>
-        <Link to="/login" className="button alt">Login Instead</Link>
+        <Link to="/register" className="button alt">Register Instead</Link>
 
         <form id="loginform" onSubmit={e => this.login(e)}>
           <TextBox type="text" name="email" label="Email" />
