@@ -24,7 +24,7 @@ class LoanCard extends Component {
         <div>Description: {this.props.desc}</div>
         {this.props.outstand && <div>Outstanding</div>}
 
-        {this.props.usertype === 'bank' && (
+        {this.props.usertype === 'bank' && !this.props.bankID && (
           <div>
             <button type="submit" onClick={e => this.accept(e)}>Accept</button>
             <button type="submit" onClick={e => this.reject(e)}>Reject</button>
