@@ -2,17 +2,20 @@
 by Eric Li and Jeffrey Lin
 
 You can be a tycoon; all you need is a teaspoon of a loan to start
+All you need is a dollar and a dream
 
 ### About
 
 A speculative web application to make microfinancing easier; connects individuals with banks both for loans and physical capital.
 
+Built using the MVC model. Check out the controllers for all the API endpoints you can use! Full test coverage of endpoints, using Postman.
+
 
 ### More
 
-[Presentation](https://docs.google.com/presentation/d/1zvmNMgcl3oOnWcpe2Tlei8je7U7lP9izRwchRBVlzS8/edit?usp=drive_web&ouid=109676444814068866609)
+[Presentation](http://bit.ly/2S2FfI2)
 
-[Heroku Demo](https://shrouded-garden-55206.herokuapp.com/)     
+[Heroku Demo](http://bit.ly/2BpCs1h)     
 * Reload if images aren't appearing
 * Slight issues with running it on Heroku
 
@@ -20,10 +23,10 @@ A speculative web application to make microfinancing easier; connects individual
 
 * React + Redux
 * Node + Express
-* Postgresql + Sequlize
+* Postgresql + Sequelize
 
 
 ### Stretch Goals
 
 * Implement a profile page
-* Hook it up with Stripe
+* Hook it up with Stripe (pretty much there, but no credit card to test it on!)
