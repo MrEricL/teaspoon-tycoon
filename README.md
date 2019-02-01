@@ -1,7 +1,8 @@
 ## Teaspoon Tycoon
 by Eric Li and Jeffrey Lin
 
-You can be a tycoon; all you need is a teaspoon of a loan to start
+You can be a tycoon; all you need is a teaspoon of a loan to start   
+   
 All you need is a dollar and a dream
 
 ### About
